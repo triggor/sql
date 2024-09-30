@@ -5,17 +5,31 @@ Create a logical model for a small bookstore. 📚
 
 At the minimum it should have employee, order, sales, customer, and book entities (tables). Determine sensible column and table design based on what you know about these concepts. Keep it simple, but work out sensible relationships to keep tables reasonably sized. Include a date table. There are several tools online you can use, I'd recommend [_Draw.io_](https://www.drawio.com/) or [_LucidChart_](https://www.lucidchart.com/pages/).
 
+![image](./sql_assignment1.png)
+
 ## Question 2
 We want to create employee shifts, splitting up the day into morning and evening. Add this to the ERD.
 
+![image](./sql_assignment2.png)
+
 ## Question 3
 The store wants to keep customer addresses. Propose two architectures for the CUSTOMER_ADDRESS table, one that will retain changes, and another that will overwrite. Which is type 1, which is type 2?
+
+### Type 1: Overwriting
+The address information will be updated directly in the CUSTOMER_ADDRESS table, and no historical records are kept. The relation is 1-to-1.
+
+![image](./type1.png)
+
+### Type 2: Historical Retention
+The table stores multiple rows for each customer, retaining previous addresses and marking the current one. The relation is one-to-many.
+
+![image](./type2.png)
 
 _Hint, search type 1 vs type 2 slowly changing dimensions._
 
 Bonus: Are there privacy implications to this, why or why not?
 ```
-Your answer...
+Type 2 architecture stores customers previous addresses, which can increase the risk of exposing sensitive personal data. This requires stronger data protection measures to prevent misuse or unauthorized access. 
 ```
 
 ## Question 4
@@ -23,7 +37,7 @@ Review the AdventureWorks Schema [here](https://imgur.com/a/u0m8fX6)
 
 Highlight at least two differences between it and your ERD. Would you change anything in yours?
 ```
-Your answer...
+The AdventureWorks schema is very granular and therefore complex. It has very specific tables for various business processes, which are normalized. If our bookstore grows, I would consider creating more tables and columns, and normalizing them to better manage relationships and avoid data redundancy.
 ```
 
 # Criteria
