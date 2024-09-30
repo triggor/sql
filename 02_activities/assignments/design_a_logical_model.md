@@ -18,12 +18,12 @@ The store wants to keep customer addresses. Propose two architectures for the CU
 ### Type 1: Overwriting
 The address information will be updated directly in the CUSTOMER_ADDRESS table, and no historical records are kept. The relation is 1-to-1.
 
-![image](./type1.png)
+![image](./type1.PNG)
 
 ### Type 2: Historical Retention
 The table stores multiple rows for each customer, retaining previous addresses and marking the current one. The relation is one-to-many.
 
-![image](./type2.png)
+![image](./type2.PNG)
 
 _Hint, search type 1 vs type 2 slowly changing dimensions._
 
